@@ -1,0 +1,30 @@
+xml配置
+id和name区别
+1、name可能配置特殊字符
+2、name可以同名，但后面的会覆盖前面的
+
+属性注入 property的name值要跟setXXX方法的XXX一致
+构造器注入 注入的参数没有顺序区别
+工厂方法注入 分为静态和非静态注入
+
+ref 是ref-bean的缩写，ref-local和ref-parent没有缩写
+
+内部bean注入，作用域为prototype
+
+null值为<null />
+
+数组注入用<list>
+
+<util:list>等用来注入集合bean
+
+abstract="true" 把bean当作模板，不能实例化，不用指定class
+
+parent="父类id" 子类继承父类属性值
+
+aop:scoped-proxy 在指定的作用域里调用
+
+FactoryBean接口，通过编码的方式来实现某个类的特殊实例化
+
+@Autowired 默认按类型，@Resource默认按名字
+
+<context:property-placeholder location="classpath:db.properties" /> 引用properties文件里的变量值

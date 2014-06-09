@@ -2,10 +2,47 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
 	">
-	<bean></bean>
+	<!-- <bean id="car" class="test.Car" >
+		<constructor-arg name="iDcar" value="321" index="" type="java.lang.String" />	
+		<constructor-arg name="money" value="123" />
+		<constructor-arg name="name" value="mycar" />
+		<constructor-arg name="remark" value="test" />		
+	</bean> -->
+	
+	<!-- <context:component-scan base-package="test" ></context:component-scan> -->
+	<bean id="boss" class="test.Boss">
+		<property name="car">
+			<bean class="test.Car">
+				<property name="IDcar" ><null /></property>
+				<property name="money" value="120" />
+				<property name="name" value="mycar" />
+				<property name="remark" value="boss car" />
+			</bean>
+		</property>
+		<property name="cards">
+			<map>
+				<entry key="tow" value="2"></entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="son" class="test.Son" parent="boss">
+		<property name="sonName" value="boss son" />
+	</bean>
+	<util:list value-type="java.lang.String" id="mylist" list-class="java.util.ArrayList">
+		<value>one</value>
+		<value>two</value>
+	</util:list>
+	<bean id="student" class="test.StudentFactory"></bean>
+	<context:property-placeholder location="classpath:db.properties" />
+	<bean id="student2" class="test.Student">
+		<property name="name" value="${db.dbname}" />
+	</bean>
 </beans>
