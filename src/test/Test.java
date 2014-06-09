@@ -24,7 +24,7 @@ public class Test {
 		System.out.println(son.getCar().getMoney());
 		Student student=(Student)applicationContext.getBean("student2");
 		System.out.println(student.getName());
-
+		String[] str=new String[3];
 	}
 
 }

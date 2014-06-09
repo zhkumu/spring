@@ -1,0 +1,15 @@
+dispatcherservlet
+
+web.xml
+<context-param>中的contextConfigLocation 读取业务层和持久层的spring配置文件，被父级spring容器使用
+
+<init-param>
+	<param-name>publishEvents</param-name>
+	<param-value>false</param-value>
+</init-param>
+设置请求后不向容器发布一个serlvetrequesthandledEvent事件，提高性能
+
+controller 方法中的参数自动绑定，如果是String不传值默认为null，但其它基本类型不传值则报错
+		   @RequestParam 参数为字符串，默认也是不传值也会报错，除非required=false，如果是基本类型则设置默认值
+
+

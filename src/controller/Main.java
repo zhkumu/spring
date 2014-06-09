@@ -3,9 +3,12 @@ package controller;
 import java.io.File;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.New;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileSystemUtils;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +21,7 @@ import dao.SystemUserDao;
 @RequestMapping("/main")
 public class Main {
 	
-	@Resource
+
 	private SystemUserDao systemUserDao;
 	
 	@RequestMapping(value="/upload",method=RequestMethod.GET)
@@ -31,9 +34,20 @@ public class Main {
 		return "main/upload";
 	}
 	
-	@RequestMapping("/test")
-	public String test(){
-		System.out.println(systemUserDao.getUsers());
+	@RequestMapping("/test/{userId}")
+	public String test(@PathVariable("userId") String userId){
+		//System.out.println(systemUserDao.getUsers());
+		System.out.println(userId);
 		return "main/test";
+	}
+	@RequestMapping(value="/param",params={"userId"})
+	public String param(@RequestParam(value="userId") String userId){
+		System.out.println(userId);
+		return "main/param";
+	}
+	
+	@RequestMapping("/request")
+	public String request(@RequestParam(value="userId",required=false) String userId){
+		return "main/request";
 	}
 }
