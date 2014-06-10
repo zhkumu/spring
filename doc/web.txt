@@ -1,0 +1,14 @@
+DefaultHandlerExceptionResolver 异常转换为对应的错误码
+AnnotationMethodHandlerException @ExceptionHandler 
+ResponseStatusExceptionResolver @ResponseStatus(错误码)
+SimpleMappingExceptionResolver 异常指定到对应的视图
+
+视图解析器得到视图对象（jsp等，渲染模型数据）
+springmvc提供了一个view接口
+
+application/octet-stream 浏览器默认下载提示框
+application/vnd.ms-excel 应用程序打开和下载提示框
+
+xmlviewresolver 把视图bean放到其他文件，只放视图bean，里面的bean只被xmlviewresolver独享
+
+ContentNegotiatingViewResolver 根据各个条件来判断视图输出

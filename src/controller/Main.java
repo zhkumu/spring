@@ -1,19 +1,29 @@
 package controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.enterprise.inject.New;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
+
+import common.ExcelView;
 
 import dao.SystemUserDao;
 
@@ -34,10 +44,10 @@ public class Main {
 		return "main/upload";
 	}
 	
-	@RequestMapping("/test/{userId}")
-	public String test(@PathVariable("userId") String userId){
+	@RequestMapping("/test")
+	@ResponseStatus(reason="错误",value=HttpStatus.NOT_FOUND)
+	public String test(){
 		//System.out.println(systemUserDao.getUsers());
-		System.out.println(userId);
 		return "main/test";
 	}
 	@RequestMapping(value="/param",params={"userId"})
@@ -50,4 +60,35 @@ public class Main {
 	public String request(@RequestParam(value="userId",required=false) String userId){
 		return "main/request";
 	}
+	
+	@RequestMapping("/getExcel")
+	public String getExcel(ModelMap map){
+		String[] headers=new String[3];
+		headers[0]="姓名";
+		headers[1]="性别";
+		headers[2]="年龄";
+		List<String[]> contents=new ArrayList<String[]>();
+		String[] s1={"mu","1","20"};
+		String[] s2={"smell","0","20"};
+		contents.add(s1);
+		contents.add(s2);
+		map.put("head", headers);
+		map.put("content", contents);
+		map.put("filename", "测试下载");
+		return "excelView";
+	}
+	
+	@RequestMapping("/getJson")
+	public String getJson(Map map){
+		String str="hello world";
+		map.put("msg", str);
+		return "jsonView";
+	}
+	
+	@RequestMapping("/getEntity")
+	public ResponseEntity<String> getEntity(){
+		String tr="hello world";
+		return new ResponseEntity<String>(tr,HttpStatus.OK);
+	}
+	
 }

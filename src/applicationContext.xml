@@ -16,6 +16,15 @@
 	http://www.springframework.org/schema/security  
     http://www.springframework.org/schema/security/spring-security.xsd">
 	<!-- <mvc:annotation-driven/> -->
+   	
+   	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+   	</bean>      
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	</bean>
+	<bean id="excelView" class="common.ExcelView" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/" />
