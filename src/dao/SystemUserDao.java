@@ -9,10 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
 public class SystemUserDao {
 	
-	@Resource
+	
 	private JdbcTemplate jdbcTemplate;
 	
 	public String getUsers(){

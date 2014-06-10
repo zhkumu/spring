@@ -15,20 +15,28 @@
 	http://www.springframework.org/schema/util/spring-util-3.0.xsd
 	http://www.springframework.org/schema/security  
     http://www.springframework.org/schema/security/spring-security.xsd">
-	<mvc:annotation-driven/>
+   	
+   	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+   	</bean>      
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	</bean>
+	<bean id="excelView" class="common.ExcelView" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<context:component-scan base-package="controller" />
-	<context:component-scan base-package="dao" />
+	<!-- <context:component-scan base-package="dao" /> -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!--设置上传文件大小的参数 -->
 		<property name="maxUploadSize" value="1000000" />
 	</bean>
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -39,6 +47,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
 		<property name="testWhileIdle" value="true" />
 		<property name="validationQuery" value="select 1 from dual" />
-	</bean>
+	</bean> -->
 	
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 </beans>
