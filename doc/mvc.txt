@@ -1,15 +1,15 @@
 dispatcherservlet
 
 web.xml
-<context-param>ÖĞµÄcontextConfigLocation ¶ÁÈ¡ÒµÎñ²ãºÍ³Ö¾Ã²ãµÄspringÅäÖÃÎÄ¼ş£¬±»¸¸¼¶springÈİÆ÷Ê¹ÓÃ
+<context-param>ä¸­çš„contextConfigLocation è¯»å–ä¸šåŠ¡å±‚å’ŒæŒä¹…å±‚çš„springé…ç½®æ–‡ä»¶ï¼Œè¢«çˆ¶çº§springå®¹å™¨ä½¿ç”¨
 
 <init-param>
 	<param-name>publishEvents</param-name>
 	<param-value>false</param-value>
 </init-param>
-ÉèÖÃÇëÇóºó²»ÏòÈİÆ÷·¢²¼Ò»¸öserlvetrequesthandledEventÊÂ¼ş£¬Ìá¸ßĞÔÄÜ
+è®¾ç½®è¯·æ±‚åä¸å‘å®¹å™¨å‘å¸ƒä¸€ä¸ªserlvetrequesthandledEventäº‹ä»¶ï¼Œæé«˜æ€§èƒ½
 
-controller ·½·¨ÖĞµÄ²ÎÊı×Ô¶¯°ó¶¨£¬Èç¹ûÊÇString²»´«ÖµÄ¬ÈÏÎªnull£¬µ«ÆäËü»ù±¾ÀàĞÍ²»´«ÖµÔò±¨´í
-		   @RequestParam ²ÎÊıÎª×Ö·û´®£¬Ä¬ÈÏÒ²ÊÇ²»´«ÖµÒ²»á±¨´í£¬³ı·Çrequired=false£¬Èç¹ûÊÇ»ù±¾ÀàĞÍÔòÉèÖÃÄ¬ÈÏÖµ
+controller æ–¹æ³•ä¸­çš„å‚æ•°è‡ªåŠ¨ç»‘å®šï¼Œå¦‚æœæ˜¯Stringä¸ä¼ å€¼é»˜è®¤ä¸ºnullï¼Œä½†å…¶å®ƒåŸºæœ¬ç±»å‹ä¸ä¼ å€¼åˆ™æŠ¥é”™
+		   @RequestParam å‚æ•°ä¸ºå­—ç¬¦ä¸²ï¼Œé»˜è®¤ä¹Ÿæ˜¯ä¸ä¼ å€¼ä¹Ÿä¼šæŠ¥é”™ï¼Œé™¤érequired=falseï¼Œå¦‚æœæ˜¯åŸºæœ¬ç±»å‹åˆ™è®¾ç½®é»˜è®¤å€¼
 
 
