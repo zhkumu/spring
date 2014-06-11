@@ -1,0 +1,12 @@
+TimeTask 定时任务
+Timer 一个Timer只用一个线程执行全部的任务，所以任务应该时间比较短，不然会出问题
+     schedule方法 周期执行 0秒开始，方法执行花了1.5秒，周期2秒，那下次从3.5秒开始
+     fixedRate方法 周期执行 0秒开始，方法执行花了1.5秒，周期2秒，那下次从2秒开始
+     
+spring 
+org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean 把某个bean当作任务bean
+org.springframework.scheduling.timer.ScheduledTimerTask 指定任务
+org.springframework.scheduling.timer.TimerFactoryBean 在spring容器生命周期内运行定时任务
+
+
+
