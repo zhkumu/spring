@@ -15,11 +15,10 @@ public class MyTimer {
 		timer.schedule(task, 1000, 2000);
 		InputStream in= System.in;
 		in.read();*/
-		/*
+		
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("time.xml");
-		applicationContext.getBean("scheduledTask");
 		InputStream in= System.in;
-		in.read();*/
+		in.read();
 		
 		
 	}

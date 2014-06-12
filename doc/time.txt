@@ -8,5 +8,13 @@ org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean 把某�
 org.springframework.scheduling.timer.ScheduledTimerTask 指定任务
 org.springframework.scheduling.timer.TimerFactoryBean 在spring容器生命周期内运行定时任务
 
+Quartz spring3.1以下只能使用1.x版本
+JobDataMap 给job传输数据
+Job 任务
+JobDetail 描述job的相关信息
+Trigger 描述触发job的执行触发规则（SimpleTrigger 定时，CronTrigger复杂规则）
+Calendar 特殊时间集合
+Scheduler 任务运行容器，把trigger绑定到jobdetail上，一个trigger只能绑定一个job，一个job可以有多个trigger
+
 
 

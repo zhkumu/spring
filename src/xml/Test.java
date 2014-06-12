@@ -1,16 +1,29 @@
 package xml;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.Date;
+
+import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 
 public class Test {
 	private static XStream xstream;
+	private static String str;
 	static{
 		xstream=new XStream(new DomDriver());
 		/*
@@ -67,8 +80,10 @@ public class Test {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		object2XMl();
+		//object2XMl();
 		//XML2Object();
+		object2XMLStream();
+		XML2ObjectStream();
 	}
 	
 	public static User getUser(){
@@ -96,6 +111,22 @@ public class Test {
 		System.out.println(user.getUserId());
 	}
 	
+	public static void object2XMLStream() throws IOException{
+		User user=getUser();
+		StringWriter writer=new StringWriter();
+		PrettyPrintWriter prettyPrintWriter=new PrettyPrintWriter(writer);
+		ObjectOutputStream out=xstream.createObjectOutputStream(writer);
+		out.writeObject(user);
+		out.close();
+		str=writer.toString();
+		System.out.println(str);
+	}
 	
+	public static void XML2ObjectStream() throws IOException, ClassNotFoundException{
+		InputStream in=new ByteArrayInputStream(str.getBytes("utf-8"));
+		ObjectInputStream input=xstream.createObjectInputStream(in);
+		User user=(User)input.readObject();
+		System.out.println(user.getUserId());
+	}
 
 }

@@ -30,9 +30,39 @@
 		</property>
 	</bean> -->
 	
-	<bean id="stask" class="test.Time.SpringTask"  />
-	<task:scheduled-tasks>
+ 	<bean id="stask" class="test.Time.SpringTask"  />
+ 	<task:scheduler id="myScheduler" pool-size="10" />
+ 	
+	<task:scheduled-tasks scheduler="myScheduler">
 		<task:scheduled ref="stask" fixed-rate="1402480680" method="show" cron="0/5 * * * * ?"/>
-	</task:scheduled-tasks>
+	</task:scheduled-tasks> 
+<!-- 	<task:annotation-driven/> -->
 	
+	<!-- <bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean" >
+		<property name="applicationContextJobDataKey" value="applicationContext" />
+		<property name="jobClass" value="test.Time.MyJob"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="username" value="mu" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="trigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean" >
+		<property name="jobDetail" value="jobDetail" />
+		<property name="repeatInterval" value="2000"></property>
+	</bean>
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers" value="trigger"></property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.theadPool.class">
+				org.quartz.simpl.SimpleThreadPool
+				</prop>
+				<prop key="org.quartz.threadPool.threadCount">
+				10
+				</prop>
+			</props>
+		</property>
+	</bean> -->
 </beans>
