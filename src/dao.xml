@@ -23,5 +23,6 @@
 		<property name="validationQuery" value="select 1 from dual" />
 	</bean>
 	
+	
 </beans>
 

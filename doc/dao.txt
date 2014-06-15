@@ -1,0 +1,1 @@
+daosupport 不再使用，因为可以直接注入tmplate模板类

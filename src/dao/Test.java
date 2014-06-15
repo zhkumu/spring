@@ -8,7 +8,7 @@ public class Test {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("dao.xml");
 		SystemUserDao dao=(SystemUserDao)applicationContext.getBean("systemUserDao");
-		dao.insertUser("test1", "123");
+		dao.insertUser("test1", "123",2);
 		System.out.println(dao.getUsers());
 	}
 }
