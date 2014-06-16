@@ -1,1 +1,62 @@
 daosupport 不再使用，因为可以直接注入tmplate模板类
+execute 执行DDL语句
+update 执行CUD语句
+
+//返回新插入的自增id
+KeyHolder keyHolder=new GeneratedKeyHolder();
+jdbcTemplate.update(new PreparedStatementCreator() {
+	@Override
+	public PreparedStatement createPreparedStatement(Connection con)
+		throws SQLException {
+		PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, userName);
+		ps.setString(2, pwd);
+		return ps;
+		}
+},keyHolder);
+并发量多的话，这个容易出错，所以oracel是先查询序列再保存数据
+
+//批量更新
+final String sql="insert into `systemuser`(`username`,pwd)values(?,?);";
+	 	int[] result= jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
+			
+	 		//设置参数
+	 		@Override
+			public void setValues(PreparedStatement ps, int index) throws SQLException {
+	 			String name=list.get(index);
+				ps.setString(1,name);
+				ps.setString(2, "123456");
+			}
+			
+			@Override
+			public int getBatchSize() {
+				return list.size();
+			}
+		});
+	 	return result;
+PreparedStatement是从1开始
+如果批量了整个list，如果list过大，需要把list截断，分批传给方法	 
+
+//处理结果集
+List<String> list= jdbcTemplate.query("select `username` from systemuser ", new Object[]{},new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet resultset, int i)
+					throws SQLException {
+				System.out.println(i);
+				return resultset.getString("username");
+			}
+		});
+		return list;
+resultset从1开始，但int却是从0开始
+RowMapper 把数据加载在内存中，太大数据会内存溢出
+
+接口层不是必须的
+事务是默认自动传播的
+通过ThreadLoad使用bean变成无状态的
+相同线程中嵌套调用的事务方法工作在一个事务中，不同线程的则在不同的事务中进行
+ORM框架的事务能自动包含JDBC的事务，由于存在事务同步缓存不同步问题，最好使用ORM进行写操作，jdbc进行读操作
+spring事务是基于接口动态代理或动态字节码技术，所以如果是使用接口动态代理的，事务方法不能用public和static
+	  如果是用动态字节码的，事务方法不能是final、private、static
+	 以上的方法不能启动事务，但包含在其他事务方法中，还是能在事务中工作（事务传播）
+调用底层连接资源记得释放，避免连接泄露
+DataSourceUtils调用连接，在事务中会自动释放，如果不在事务中还要手动释放
