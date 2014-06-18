@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+	<HEADER>
+		<FIELD name="RESULT_CODE" value="0" />
+		<FIELD name="RESULT_INFO" value="接口调用成功" />
+	</HEADER>
+	<BODY>
+		<SINGLE>
+			<FIELD name="START_DATE" value="201405, 201405, 201405" />
+			<FIELD name="BUSI_RETURN_INFO" value="查询积分基本信息成功" />
+			<FIELD name="SCORE_VALUE" value="17448" />
+			<FIELD name="END_DATE" value="201406, 201406, 201406" />
+			<FIELD name="VALUE" value="1123" />
+			<FIELD name="BRAND_CODE" value="G045" />
+			<FIELD name="BUSI_RETURN_CODE" value="0" />
+			<FIELD name="BRAND" value="全球通" />
+		</SINGLE>
+		<MULTIPLY>
+			<LIST>
+				<FIELD name="SCORE_TYPE_NAME" value="品牌积分" />
+				<FIELD name="INTEGRAL_FEE" value="652" />
+				<FIELD name="CYCLE_ID" value="20140601" />
+				<FIELD name="INTEGRAL_TYPE_CODE" value="V" />
+			</LIST>
+			<LIST>
+				<FIELD name="SCORE_TYPE_NAME" value="网龄积分" />
+				<FIELD name="INTEGRAL_FEE" value="109" />
+				<FIELD name="CYCLE_ID" value="20140601" />
+				<FIELD name="INTEGRAL_TYPE_CODE" value="Q" />
+			</LIST>
+			<LIST>
+				<FIELD name="SCORE_TYPE_NAME" value="消费积分" />
+				<FIELD name="INTEGRAL_FEE" value="362" />
+				<FIELD name="CYCLE_ID" value="20140601" />
+				<FIELD name="INTEGRAL_TYPE_CODE" value="D" />
+			</LIST>
+		</MULTIPLY>
+	</BODY>
+</ROOT>
+

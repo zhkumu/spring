@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://remote/" targetNamespace="http://remote/" version="1.0">
+
+  <xs:element name="getFile" type="tns:getFile"/>
+
+  <xs:element name="getFileResponse" type="tns:getFileResponse"/>
+
+  <xs:element name="getList" type="tns:getList"/>
+
+  <xs:element name="getListResponse" type="tns:getListResponse"/>
+
+  <xs:element name="getPersons" type="tns:getPersons"/>
+
+  <xs:element name="getPersonsResponse" type="tns:getPersonsResponse"/>
+
+  <xs:element name="say" type="tns:say"/>
+
+  <xs:element name="sayResponse" type="tns:sayResponse"/>
+
+  <xs:element name="upload" type="tns:upload"/>
+
+  <xs:element name="uploadResponse" type="tns:uploadResponse"/>
+
+  <xs:complexType name="getFile">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPersons">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getPersonsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:person"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="person">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="pwd" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="upload">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="uploadResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="say">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getList">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getListResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

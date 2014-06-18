@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- 	<bean id="client" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="wsdlDocumentUrl" value="http://localhost:8181/weatherStation/springService?wsdl" />
+		<property name="serviceName" value="springService" />
+		<property name="portName" value="SpringServiceImpPort" />
+		<property name="serviceInterface" value="client.SpringService" />
+		<property name="namespaceUri" value="http://remote/" />
+	</bean> -->
+	<bean id="client" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="wsdlDocumentUrl" value="https://221.179.11.204:9090/eaop/EaopServerPort?wsdl" />
+		<property name="serviceName" value="EaopServer" />
+		<property name="portName" value="EaopServerPort" />
+		<property name="serviceInterface" value="client.EaopServer" />
+		<property name="namespaceUri" value="http://eaop.gd.chinamobile.com" />
+	</bean>
+
+</beans>
